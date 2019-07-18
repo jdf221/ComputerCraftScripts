@@ -54,7 +54,6 @@ if not fs.exists("AutoFarmInfo.txt") then
 end
  
 function goFarm()
-local seedsNeeded = nil
 local seedSlot = nil
 for slotNumber = 1,16,1 do
   details = turtle.getItemDetail(slotNumber)
@@ -64,7 +63,7 @@ for slotNumber = 1,16,1 do
       seedSlot = slotNumber
     else
       turtle.select(slotNumber)
-      turtle.trasferTo(seedSlot)      
+      turtle.transferTo(seedSlot)      
       turtle.drop()
     end
   end
