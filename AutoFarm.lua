@@ -54,18 +54,18 @@ if not fs.exists("AutoFarmInfo.txt") then
 end
  
 function goFarm()
-local currentSeedCount = 0
+local seedsNeeded = nil
+local seedSlot = nil
 for slotNumber = 1,16,1 do
   details = turtle.getItemDetail(slotNumber)
-    
+
   if details and details.name == "natura:overworld_seeds" then
-    if currentSeedCount >= 64 then
-      turtle.select(slotNumber)
-      turtle.drop()
+    if seedSlot == nil then
+      seedSlot = slotNumber
     else
-      currentSeedCount = currentSeedCount + details.count
       turtle.select(slotNumber)
-      turtle.drop(currentSeedCount - 64)
+      turtle.trasferTo(seedSlot)      
+      turtle.drop()
     end
   end
 end
