@@ -134,12 +134,17 @@ if turtle.getFuelLevel() > (farmInfo["width"] * (farmInfo["length"] + 3)) then
     end
   end
 
+  if farmInfo["x"] ~= 0 then
   for i = 0,farmInfo["length"] - 1,1 do
-    farmInfo["x"] = farmInfo["x"] - 1
-    turtle.back()
-    setAutoFarmInfo(farmInfo)
+      farmInfo["x"] = farmInfo["x"] - 1
+      turtle.back()
+      setAutoFarmInfo(farmInfo)
   end
   turtle.turnLeft()
+  else
+  turtle.turnRight()
+  end
+  
   
   for i = 0,farmInfo["width"] - 1,1 do
     farmInfo["y"] = farmInfo["y"] - 1
