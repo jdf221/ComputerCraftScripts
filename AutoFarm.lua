@@ -64,7 +64,7 @@ for slotNumber = 1,16,1 do
       turtle.drop()
     else
       currentSeedCount = currentSeedCount + details.count
-      turtle.drop((currentSeedCount + details.count) - 64)
+      turtle.drop(currentSeedCount - 64)
     end
   end
 end
