@@ -3,6 +3,9 @@ function setAutoFarmInfo(farmInfo)
  
   infoFile.writeLine(farmInfo["width"])
   infoFile.writeLine(farmInfo["length"])
+  infoFile.writeLine(farmInfo["seedName"])
+  infoFile.writeLine(farmInfo["plantName"])
+  infoFile.writeLine(farmInfo["grownMetadata"])
   infoFile.writeLine(farmInfo["x"])
   infoFile.writeLine(farmInfo["y"])
  
@@ -15,6 +18,9 @@ function getAutoFarmInfo()
   infoTable = {}
   infoTable["width"] = tonumber(infoFile.readLine())
   infoTable["length"] = tonumber(infoFile.readLine())
+  infoTable["seedName"] = infoFile.readLine()
+  infoTable["plantName"] = infoFile.readLine()
+  infoTable["grownMetadata"] = infoFile.readLine()
   infoTable["x"] = tonumber(infoFile.readLine())
   infoTable["y"] = tonumber(infoFile.readLine())
  
@@ -46,6 +52,15 @@ if not fs.exists("AutoFarmInfo.txt") then
  
   io.write("Farm length: ")
   farmInfo["length"] = tonumber(read()) - 1
+    
+  io.write("Seed name: ")
+  farmInfo["seedName"] = read()
+    
+  io.write("Plant name: ")
+  farmInfo["plantName"] = read()
+    
+  io.write("Grown Metadata: ")
+  farmInfo["grownMetadata"] = tonumber(read())
  
   farmInfo["x"] = 0
   farmInfo["y"] = 0
@@ -58,7 +73,7 @@ local seedSlot = nil
 for slotNumber = 1,16,1 do
   details = turtle.getItemDetail(slotNumber)
 
-  if details and details.name == "natura:overworld_seeds" then
+  if details and details.name == farmInfo["seedName"] then
     if seedSlot == nil then
       seedSlot = slotNumber
     else
@@ -109,11 +124,11 @@ if turtle.getFuelLevel() > (farmInfo["width"] * (farmInfo["length"] + 3)) then
            
       local success, blockDetails = turtle.inspectDown()
       if success then
-        if blockDetails.metadata == 3 then
+        if blockDetails.metadata == farmInfo["grownMetadata"] then
           turtle.digDown()
         end        
       end
-      if selectItem("natura:overworld_seeds") then
+      if selectItem(farmInfo["seedName"]) then
         turtle.placeDown()
       end
     end
@@ -137,7 +152,7 @@ if turtle.getFuelLevel() > (farmInfo["width"] * (farmInfo["length"] + 3)) then
   turtle.back()
   setAutoFarmInfo(farmInfo)
   
-  while selectItem("natura:materials") do
+  while selectItem(farmInfo["plantName"]) do
     turtle.dropDown()
   end
         
@@ -153,7 +168,7 @@ end
 while true do
   local success, blockDetails = turtle.inspectDown()
   if success then
-    if blockDetails.metadata == 3 then
+    if blockDetails.metadata == farmInfo["grownMetadata"] then
       goFarm()
     end        
   end
