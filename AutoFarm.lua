@@ -61,7 +61,7 @@ for slotNumber = 1,16,1 do
   if details and details.name == "natura:overworld_seeds" then
     if currentSeedCount >= 64 then
       turtle.select(slotNumber)
-      turtle.drop()
+      turtle.drop((currentSeedCount + details.count) - 64)
     else
       currentSeedCount = currentSeedCount + details.count
     end
