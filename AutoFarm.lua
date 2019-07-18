@@ -20,7 +20,7 @@ function getAutoFarmInfo()
   infoTable["length"] = tonumber(infoFile.readLine())
   infoTable["seedName"] = infoFile.readLine()
   infoTable["plantName"] = infoFile.readLine()
-  infoTable["grownMetadata"] = infoFile.readLine()
+  infoTable["grownMetadata"] = tonumber(infoFile.readLine())
   infoTable["x"] = tonumber(infoFile.readLine())
   infoTable["y"] = tonumber(infoFile.readLine())
  
@@ -164,6 +164,8 @@ else
 print("Not enough fuel")
 end
 end
+
+farmInfo = getAutoFarmInfo()
 
 while true do
   local success, blockDetails = turtle.inspectDown()
