@@ -1,3 +1,5 @@
+print("test");
+
 function setAutoFarmInfo(farmInfo)
   local infoFile = fs.open("AutoFarmInfo.txt", "w")
  
@@ -46,6 +48,11 @@ if not fs.exists("AutoFarmInfo.txt") then
   local farmInfo = {}
  
   print("AutoFarm Setup")
+  
+  print("Inventory Items:")
+  for slotNumber = 1,16,1 do    
+    print(slotNumber .. ": " .. turtle.getItemDetail(slotNumber).name)
+  end
  
   io.write("Farm width: ")
   farmInfo["width"] = tonumber(read()) - 1
