@@ -47,6 +47,7 @@ if not fs.exists("AutoFarmInfo.txt") then
  
   print("AutoFarm Setup")
   
+  print("")
   print("Inventory Items:")
   for slotNumber = 1,16,1 do    
     details = turtle.getItemDetail(slotNumber)
