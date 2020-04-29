@@ -1,5 +1,3 @@
-print("test");
-
 function setAutoFarmInfo(farmInfo)
   local infoFile = fs.open("AutoFarmInfo.txt", "w")
  
@@ -51,8 +49,10 @@ if not fs.exists("AutoFarmInfo.txt") then
   
   print("Inventory Items:")
   for slotNumber = 1,16,1 do    
+    details = turtle.getItemDetail(slotNumber)
+    
     if details then
-      print(slotNumber .. ": " .. turtle.getItemDetail(slotNumber).name)
+      print(slotNumber .. ": " .. details.name)
     end
   end
  
