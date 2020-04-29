@@ -55,6 +55,7 @@ if not fs.exists("AutoFarmInfo.txt") then
       print(slotNumber .. ": " .. details.name)
     end
   end
+  print("")
  
   io.write("Farm width: ")
   farmInfo["width"] = tonumber(read()) - 1
