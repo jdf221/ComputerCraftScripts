@@ -77,6 +77,18 @@ if not fs.exists("AutoFarmInfo.txt") then
   farmInfo["y"] = 0
  
   setAutoFarmInfo(farmInfo)
+else
+  farmInfo = getAutoFarmInfo()
+  
+  print("AutoFarm Running")
+  
+  print("")
+ 
+  print("Farm width: " .. farmInfo["width"]) 
+  print("Farm length: " .. farmInfo["length"])   
+  print("Seed name: " .. farmInfo["seedName"])    
+  print("Plant name: " .. farmInfo["plantName"])    
+  print("Grown Metadata: " .. farmInfo["grownMetadata"])
 end
  
 function goFarm()
