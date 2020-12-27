@@ -254,7 +254,7 @@ find = function(peripheralType, fnFilter)
 end
 
 if(shouldRunListenLoopBool) then
-    log("Listening for Wireless Peripheral P2P messages on Rednet.\n\n  URL: ".. PROTOCOL .."://" .. os.getComputerID())
+    print("Listening for Wireless Peripheral P2P messages on Rednet.\n\n  URL: ".. PROTOCOL .."://" .. os.getComputerID())
     while true do
         if rednetListenLoop() == false then
             return
