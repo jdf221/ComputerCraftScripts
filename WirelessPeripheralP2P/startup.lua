@@ -3,3 +3,5 @@ local newSource = http.get("https://ghcdn.rawgit.org/jdf221/RandomFiles/master/W
 local sourceFile = fs.open("wpp", "w")
 sourceFile.write(newSource.readAll())
 sourceFile.close()
+
+shell.run("wpp", "--listen", "network-id")
